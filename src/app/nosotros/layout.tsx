@@ -1,25 +1,38 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
-import { createPageMetadata, getBreadcrumbJsonLd } from "@/lib/seo";
-import { site } from "@/lib/site";
+import {
+  createPageMetadata,
+  getAboutPageJsonLd,
+  getBreadcrumbJsonLd,
+  getWebPageJsonLd,
+} from "@/lib/seo";
+import { pageSeo } from "@/lib/seo-pages";
 
-const years = new Date().getFullYear() - Number(site.since);
+const seo = pageSeo.nosotros;
 
 export const metadata: Metadata = createPageMetadata({
-  title: `Sobre nosotros — ${years}+ años de experiencia`,
-  description: `Conoce ${site.name}, gestoría tradicional en ${site.city} desde ${site.since}. Trato personal, claridad y confianza para autónomos y empresas.`,
-  path: "/nosotros",
-  keywords: [`gestoría ${site.city}`, "gestoría de confianza", "historia gestoría"],
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  keywords: [...seo.keywords],
 });
 
 export default function NosotrosLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <JsonLd
-        data={getBreadcrumbJsonLd([
-          { name: "Inicio", path: "/" },
-          { name: "Sobre nosotros", path: "/nosotros" },
-        ])}
+        data={[
+          getBreadcrumbJsonLd([
+            { name: "Inicio", path: "/" },
+            { name: "Sobre nosotros", path: "/nosotros" },
+          ]),
+          getWebPageJsonLd({
+            name: seo.title,
+            description: seo.description,
+            path: seo.path,
+          }),
+          getAboutPageJsonLd(),
+        ]}
       />
       {children}
     </>

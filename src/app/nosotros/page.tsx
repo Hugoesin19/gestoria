@@ -26,8 +26,6 @@ const values = [
 ];
 
 export default function NosotrosPage() {
-  const years = new Date().getFullYear() - Number(site.since);
-
   return (
     <main className="bg-cream min-h-screen">
       <section className="bg-sand-warm pt-28 md:pt-36 pb-14 md:pb-16 border-b border-olive/10">
@@ -38,16 +36,13 @@ export default function NosotrosPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <span className="inline-block py-1.5 px-4 rounded-full bg-olive/10 text-olive text-xs font-bold tracking-widest uppercase mb-5">
-                Sobre nosotros
-              </span>
               <h1 className="text-3xl md:text-5xl font-bold text-olive-dark mb-5">
-                Más de {years} años a tu lado
+                Tu gestoría de confianza
               </h1>
               <p className="text-base md:text-lg text-olive-dark/75 leading-relaxed">
                 En {site.name} combinamos la experiencia de una gestoría tradicional con la
-                comodidad que necesitas hoy. Acompañamos a autónomos y empresas en {site.city} y
-                alrededores.
+                comodidad que necesitas hoy. Acompañamos a autónomos y empresas en {site.city},{" "}
+                {site.locality} y alrededores.
               </p>
             </motion.div>
 
@@ -69,8 +64,8 @@ export default function NosotrosPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-olive-dark mb-5">Nuestra historia</h2>
           <p className="text-olive-dark/70 text-base md:text-lg leading-relaxed">
             Nacimos con una idea sencilla: que gestionar un negocio no debería ser complicado.
-            Desde {site.since} hemos acompañado a autónomos y empresas en sus trámites fiscales,
-            laborales y administrativos, siempre con un trato cercano y transparente.
+            Acompañamos a autónomos y empresas en sus trámites fiscales, laborales y
+            administrativos, siempre con un trato cercano y transparente.
           </p>
         </div>
 

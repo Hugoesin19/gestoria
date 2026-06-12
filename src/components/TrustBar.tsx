@@ -1,17 +1,17 @@
-import { Award, Clock, MapPin, Users } from "lucide-react";
+import { ShieldCheck, Clock, MapPin, Users } from "lucide-react";
 import { site } from "@/lib/site";
 import Grain from "@/components/Grain";
 
 const items = [
   {
-    icon: Award,
-    label: `Desde ${site.since}`,
-    sub: "Experiencia al servicio del cliente",
+    icon: ShieldCheck,
+    label: "Gestoría de confianza",
+    sub: "Profesionalidad y trato cercano",
   },
   {
     icon: MapPin,
     label: site.city,
-    sub: `${site.province}, España`,
+    sub: `${site.locality}, ${site.province}`,
   },
   {
     icon: Users,

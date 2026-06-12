@@ -7,8 +7,6 @@ import { site } from "@/lib/site";
 import Grain from "@/components/Grain";
 
 export default function Hero() {
-  const years = new Date().getFullYear() - Number(site.since);
-
   return (
     <section className="relative bg-cream overflow-hidden">
       {/* Ambiente: manchas estáticas (sin animación orbital) */}
@@ -39,8 +37,8 @@ export default function Hero() {
             </h1>
 
             <p className="text-base md:text-lg text-olive-dark/75 leading-relaxed mb-8 max-w-xl border-l-[3px] border-olive/30 pl-5">
-              En {site.name} llevamos más de {years} años acompañando a autónomos y empresas.
-              Asesoramiento fiscal, laboral y contable con un trato cercano y de confianza.
+              En {site.name} acompañamos a autónomos y empresas con asesoramiento fiscal,
+              laboral y contable. Un trato cercano y de confianza, como las gestorías de toda la vida.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -92,7 +90,7 @@ export default function Hero() {
             </motion.div>
 
             <div className="absolute -top-4 right-6 bg-white px-4 py-2 rounded-lg shadow-md border border-olive/10 text-xs font-semibold text-olive-dark hidden md:block">
-              +{years} años de experiencia
+              Gestoría en {site.city}
             </div>
           </motion.div>
         </div>

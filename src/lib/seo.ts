@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serviciosSchema } from "./seo-pages";
 import { site } from "./site";
 
 /** URL canónica del sitio — configurar NEXT_PUBLIC_SITE_URL en producción */
@@ -94,6 +95,8 @@ export const defaultMetadata: Metadata = {
     telephone: true,
   },
   category: "business",
+  applicationName: site.name,
+  referrer: "origin-when-cross-origin",
   alternates: {
     canonical: "/",
     languages: { "es-ES": "/" },
@@ -165,7 +168,7 @@ function postalAddress() {
   return {
     "@type": "PostalAddress",
     streetAddress: site.address,
-    addressLocality: site.city,
+    addressLocality: site.locality,
     postalCode: site.postalCode,
     addressRegion: site.province,
     addressCountry: site.country,
@@ -180,7 +183,7 @@ export function getGlobalJsonLd() {
   );
 
   const localBusiness: Record<string, unknown> = {
-    "@type": "AccountingService",
+    "@type": ["AccountingService", "LocalBusiness", "ProfessionalService"],
     "@id": `${url}/#organization`,
     name: site.name,
     legalName: site.legalName,
@@ -190,16 +193,40 @@ export function getGlobalJsonLd() {
     image: absoluteUrl("/opengraph-image"),
     description: site.description,
     priceRange: "€€",
-    foundingDate: site.since,
     address: postalAddress(),
-    areaServed: {
-      "@type": "City",
-      name: site.city,
-      containedInPlace: {
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: site.phone,
+        email: site.email,
+        contactType: "customer service",
+        areaServed: site.country,
+        availableLanguage: ["es", "Spanish"],
+      },
+    ],
+    areaServed: [
+      {
+        "@type": "City",
+        name: site.city,
+        containedInPlace: {
+          "@type": "AdministrativeArea",
+          name: site.province,
+        },
+      },
+      {
+        "@type": "City",
+        name: site.locality,
+        containedInPlace: {
+          "@type": "City",
+          name: site.city,
+        },
+      },
+      {
         "@type": "AdministrativeArea",
         name: site.province,
+        containedInPlace: { "@type": "Country", name: "España" },
       },
-    },
+    ],
     openingHoursSpecification: openingHoursSpecification(),
     knowsAbout: site.services,
     hasOfferCatalog: {
@@ -208,7 +235,12 @@ export function getGlobalJsonLd() {
       itemListElement: site.services.map((name, index) => ({
         "@type": "Offer",
         position: index + 1,
-        itemOffered: { "@type": "Service", name },
+        itemOffered: {
+          "@type": "Service",
+          name,
+          provider: { "@id": `${url}/#organization` },
+          areaServed: `${site.city}, ${site.locality}`,
+        },
       })),
     },
     ...(sameAs.length > 0 ? { sameAs } : {}),
@@ -249,5 +281,78 @@ export function getBreadcrumbJsonLd(items: { name: string; path: string }[]) {
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+type WebPageOptions = {
+  name: string;
+  description: string;
+  path: string;
+};
+
+export function getWebPageJsonLd({ name, description, path }: WebPageOptions) {
+  const url = absoluteUrl(path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: "es-ES",
+    isPartOf: { "@id": `${getSiteUrl()}/#website` },
+    about: { "@id": `${getSiteUrl()}/#organization` },
+  };
+}
+
+export function getServicesItemListJsonLd() {
+  const url = absoluteUrl("/servicios");
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Servicios de gestoría en ${site.city}`,
+    description: `Catálogo de servicios de ${site.name} en ${site.city}, ${site.province}.`,
+    url,
+    numberOfItems: serviciosSchema.length,
+    itemListElement: serviciosSchema.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        provider: { "@id": `${getSiteUrl()}/#organization` },
+        areaServed: `${site.city}, ${site.locality}`,
+        url,
+      },
+    })),
+  };
+}
+
+export function getAboutPageJsonLd() {
+  const url = absoluteUrl("/nosotros");
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${url}#aboutpage`,
+    url,
+    name: `Sobre nosotros — ${site.name}`,
+    description: `Información sobre ${site.name}, gestoría en ${site.city}, ${site.province}.`,
+    inLanguage: "es-ES",
+    mainEntity: { "@id": `${getSiteUrl()}/#organization` },
+  };
+}
+
+export function getContactPageJsonLd() {
+  const url = absoluteUrl("/contacto");
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${url}#contactpage`,
+    url,
+    name: `Contacto — ${site.name}`,
+    description: `Formulario y datos de contacto de ${site.name} en ${site.city}, ${site.province}.`,
+    inLanguage: "es-ES",
+    mainEntity: { "@id": `${getSiteUrl()}/#organization` },
   };
 }

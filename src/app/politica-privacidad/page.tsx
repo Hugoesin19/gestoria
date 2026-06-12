@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/legal";
 import { createPageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { pageSeo } from "@/lib/seo-pages";
+
+const seo = pageSeo.privacidad;
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Política de Privacidad",
-  description: `Política de privacidad y protección de datos de ${site.name} conforme al RGPD.`,
-  path: "/politica-privacidad",
-  noIndex: true,
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  noIndex: seo.noIndex,
 });
 
 export default function PoliticaPrivacidadPage() {

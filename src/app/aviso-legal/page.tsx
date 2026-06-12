@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/legal";
 import { createPageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { pageSeo } from "@/lib/seo-pages";
+
+const seo = pageSeo.avisoLegal;
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Aviso Legal",
-  description: `Aviso legal de ${site.name}. Información del titular, condiciones de uso y legislación aplicable.`,
-  path: "/aviso-legal",
-  noIndex: true,
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  noIndex: seo.noIndex,
 });
 
 export default function AvisoLegalPage() {

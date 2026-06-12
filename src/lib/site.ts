@@ -1,18 +1,23 @@
-/** Datos genéricos de la gestoría — sustituir por los reales cuando estén disponibles */
+/** Datos de la gestoría — completar dirección y teléfono reales cuando estén disponibles */
 export const site = {
   name: "Gestoría Esclapez",
   tagline: "Tu tranquilidad, nuestra prioridad.",
   description:
-    "Asesoramiento fiscal, laboral y contable para autónomos y empresas. Trato cercano y profesional.",
-  /** Título SEO de la home (incluir ciudad cuando la tengas) */
-  seoTitle: "Gestoría Esclapez | Gestoría en Ciudad — Fiscal, Laboral y Contable",
-  /** Descripción SEO (máx. ~155 caracteres recomendado) */
+    "Asesoramiento fiscal, laboral y contable para autónomos y empresas en Alicante. Trato cercano y profesional.",
+  /** Ciudad principal para SEO y comunicación */
+  city: "Alicante",
+  /** Localidad donde está la oficina */
+  locality: "San Vicente del Raspeig",
+  province: "Alicante",
+  region: "Comunidad Valenciana",
+  seoTitle: "Gestoría Esclapez | Gestoría en Alicante — Fiscal, Laboral y Contable",
   seoDescription:
-    "Gestoría en Ciudad con más de 25 años de experiencia. Asesoría fiscal, laboral, contable y trámites para autónomos y empresas. Pide cita.",
+    "Gestoría en Alicante y San Vicente del Raspeig. Asesoría fiscal, laboral, contable y trámites para autónomos y empresas. Trato cercano y profesional.",
   keywords: [
-    "gestoría",
-    "gestoría Ciudad",
-    "asesoría fiscal",
+    "gestoría Alicante",
+    "gestoría San Vicente del Raspeig",
+    "gestor administrativo Alicante",
+    "asesoría fiscal Alicante",
     "asesoría laboral",
     "contabilidad autónomos",
     "gestor administrativo",
@@ -20,23 +25,20 @@ export const site = {
     "nóminas",
     "declaración de la renta",
     "alta autónomo",
+    "gestoría Campo de Alicante",
   ],
   phone: "+34900000000",
   phoneDisplay: "900 000 000",
   email: "info@gestoriaesclapez.com",
+  /** Sustituir por la dirección real de la oficina */
   address: "C/ Ejemplo, 12",
-  city: "Ciudad",
-  postalCode: "00000",
-  province: "Provincia",
+  postalCode: "03690",
   country: "ES",
-  /** Coordenadas para Google Maps / schema (sustituir cuando las tengas) */
   geo: {
-    latitude: 0,
-    longitude: 0,
+    latitude: 38.3964,
+    longitude: -0.5255,
   },
-  since: "2000",
   hours: "Lunes a Viernes, 9:00 – 14:00 y 16:00 – 19:00",
-  /** Horario estructurado para schema.org */
   openingHours: [
     {
       days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -51,13 +53,11 @@ export const site = {
   ],
   legalName: "Gestoría Esclapez S.L.",
   clients: "+500",
-  /** Redes sociales — dejar "" si no aplica */
   social: {
     facebook: "",
     instagram: "",
     linkedin: "",
   },
-  /** Servicios principales (schema.org + SEO) */
   services: [
     "Asesoría fiscal y tributaria",
     "Gestión laboral y nóminas",

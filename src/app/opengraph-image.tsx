@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
               background: "#556b2f",
             }}
           />
-          {site.city} · Desde {site.since}
+          {site.city} · {site.locality}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

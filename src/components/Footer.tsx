@@ -12,7 +12,10 @@ const servicioLinks = ["Fiscal y Contable", "Laboral", "Jurídico", "Extranjerí
 
 export default function Footer() {
   return (
-    <footer className="relative z-30 isolate overflow-hidden bg-olive-dark text-white pt-14 pb-8 text-sm border-t border-white/10">
+    <footer
+      className="relative z-30 isolate overflow-hidden bg-olive-dark text-white pt-14 pb-8 text-sm border-t border-white/10"
+      aria-label="Pie de página"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 xl:gap-8 mb-12">
           <div className="min-w-0">
@@ -52,10 +55,10 @@ export default function Footer() {
 
           <div className="min-w-0">
             <h3 className="font-bold mb-4 text-sand uppercase tracking-wider text-xs">Servicios</h3>
-            <ul className="space-y-2.5 text-gray-400">
+            <ul className="space-y-2.5 text-gray-400" aria-label="Enlaces a servicios">
               {servicioLinks.map((item) => (
                 <li key={item}>
-                  <Link href="/servicios" className="hover:text-sand transition-colors">
+                  <Link href="/servicios" className="hover:text-sand transition-colors" title={`Servicios de ${item}`}>
                     {item}
                   </Link>
                 </li>
@@ -65,7 +68,7 @@ export default function Footer() {
 
           <div className="min-w-0">
             <h3 className="font-bold mb-4 text-sand uppercase tracking-wider text-xs">Empresa</h3>
-            <ul className="space-y-2.5 text-gray-400">
+            <ul className="space-y-2.5 text-gray-400" aria-label="Enlaces de empresa">
               {empresaLinks.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="hover:text-sand transition-colors">
@@ -84,7 +87,7 @@ export default function Footer() {
                 <span>
                   {site.address}
                   <br />
-                  {site.postalCode} {site.city}
+                  {site.postalCode} {site.locality}, {site.province}
                 </span>
               </li>
               <li className="flex gap-3 items-center">

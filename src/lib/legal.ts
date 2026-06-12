@@ -17,7 +17,7 @@ export const legal = {
 
   /** Solo si entityType === "sl" — dejar "" si no aplica */
   mercantileRegistry: {
-    city: "[Ciudad del Registro Mercantil]",
+    city: "Alicante",
     volume: "[Tomo]",
     folio: "[Folio]",
     section: "[Sección]",
@@ -28,7 +28,7 @@ export const legal = {
   /** Profesión regulada (gestoría / colegio profesional) */
   regulatedProfession: {
     enabled: true,
-    college: "[Colegio Oficial de Gestores Administrativos de ...]",
+    college: "Colegio Oficial de Gestores Administrativos de la Comunidad Valenciana",
     memberNumber: "[Número de colegiado]",
     degree: "[Título oficial, ej. Graduado en Gestión Administrativa]",
     degreeCountry: "España",
@@ -43,9 +43,9 @@ export const legal = {
 
   /** Dirección física completa */
   address: "[C/ Ejemplo, 12]",
-  postalCode: "[00000]",
-  city: "[Ciudad]",
-  province: "[Provincia]",
+  postalCode: "03690",
+  city: "San Vicente del Raspeig",
+  province: "Alicante",
 
   phone: "[900 000 000]",
 
@@ -56,7 +56,7 @@ export const legal = {
     "Ofrecer información sobre los servicios de asesoramiento fiscal, laboral, contable y administrativo, y facilitar el contacto con los interesados.",
 
   /** Tribunales competentes */
-  jurisdiction: "[Provincia de los tribunales competentes]",
+  jurisdiction: "Alicante",
 
   /** Conservación de datos del formulario (RGPD) */
   dataRetention:

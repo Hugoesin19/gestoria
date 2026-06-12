@@ -35,13 +35,13 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0" aria-label={`${site.name} — Inicio`}>
               <span className="text-xl md:text-2xl font-bold text-olive-dark tracking-tight font-heading">
                 Gestoría <span className="text-olive">Esclapez</span>
               </span>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-8" aria-label="Navegación principal">
               {links.map((link) => (
                 <Link
                   key={link.href}
@@ -65,7 +65,7 @@ export default function Navbar() {
                   Pedir cita
                 </button>
               </Link>
-            </div>
+            </nav>
 
             <div className="lg:hidden flex items-center gap-3">
               <a
@@ -94,7 +94,7 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-header border-t border-olive/12 overflow-hidden"
             >
-              <div className="px-4 py-4 space-y-1">
+              <nav className="px-4 py-4 space-y-1" aria-label="Navegación móvil">
                 {links.map((link) => (
                   <Link
                     key={link.name}
@@ -110,7 +110,7 @@ export default function Navbar() {
                     Pedir cita
                   </button>
                 </Link>
-              </div>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>
