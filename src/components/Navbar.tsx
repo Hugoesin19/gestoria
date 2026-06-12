@@ -29,8 +29,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-cream/95 backdrop-blur-md shadow-md border-b border-olive/10"
-            : "bg-cream/80 backdrop-blur-sm border-b border-olive/5"
+            ? "bg-header/97 backdrop-blur-md shadow-md border-b border-olive/15"
+            : "bg-header/95 backdrop-blur-sm border-b border-olive/12"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-cream border-t border-olive/10 overflow-hidden"
+              className="lg:hidden bg-header border-t border-olive/12 overflow-hidden"
             >
               <div className="px-4 py-4 space-y-1">
                 {links.map((link) => (
