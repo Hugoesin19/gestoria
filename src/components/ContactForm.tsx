@@ -55,26 +55,45 @@ export default function ContactForm() {
     }
   }
 
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl border border-olive/15 bg-cream/80 focus:outline-none focus:ring-2 focus:ring-olive/25 focus:border-olive/30 text-base transition-shadow";
+
   return (
-    <form className="space-y-4" onSubmit={handleSubmit} noValidate>
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-olive-dark mb-1.5">
-          Nombre <span className="text-olive">*</span>
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          minLength={2}
-          autoComplete="name"
-          className="w-full px-4 py-3 rounded-lg border border-olive/20 bg-cream focus:outline-none focus:ring-2 focus:ring-olive/30 text-base"
-          placeholder="Tu nombre"
-        />
+    <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="name" className="block text-sm font-semibold text-olive-dark mb-1.5">
+            Nombre <span className="text-olive">*</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            minLength={2}
+            autoComplete="name"
+            className={inputClass}
+            placeholder="Tu nombre"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="block text-sm font-semibold text-olive-dark mb-1.5">
+            Teléfono
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            className={inputClass}
+            placeholder="600 000 000"
+          />
+        </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-olive-dark mb-1.5">
+        <label htmlFor="email" className="block text-sm font-semibold text-olive-dark mb-1.5">
           Email <span className="text-olive">*</span>
         </label>
         <input
@@ -83,27 +102,13 @@ export default function ContactForm() {
           type="email"
           required
           autoComplete="email"
-          className="w-full px-4 py-3 rounded-lg border border-olive/20 bg-cream focus:outline-none focus:ring-2 focus:ring-olive/30 text-base"
+          className={inputClass}
           placeholder="tu@email.com"
         />
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-olive-dark mb-1.5">
-          Teléfono
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          autoComplete="tel"
-          className="w-full px-4 py-3 rounded-lg border border-olive/20 bg-cream focus:outline-none focus:ring-2 focus:ring-olive/30 text-base"
-          placeholder="600 000 000"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-olive-dark mb-1.5">
+        <label htmlFor="message" className="block text-sm font-semibold text-olive-dark mb-1.5">
           Mensaje <span className="text-olive">*</span>
         </label>
         <textarea
@@ -112,8 +117,8 @@ export default function ContactForm() {
           rows={5}
           required
           minLength={10}
-          className="w-full px-4 py-3 rounded-lg border border-olive/20 bg-cream focus:outline-none focus:ring-2 focus:ring-olive/30 resize-none text-base"
-          placeholder="¿En qué podemos ayudarte?"
+          className={`${inputClass} resize-none`}
+          placeholder="Cuéntenos en qué podemos ayudarle: trámite, consulta fiscal, alta de autónomo…"
         />
       </div>
 
@@ -152,7 +157,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={!privacyAccepted || status === "loading"}
-        className="w-full flex items-center justify-center gap-2 bg-olive text-white px-6 py-3.5 rounded-lg font-bold hover:bg-olive-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-olive"
+        className="w-full flex items-center justify-center gap-2 bg-olive text-white px-6 py-3.5 rounded-xl font-bold hover:bg-olive-dark transition-all shadow-lg shadow-olive/20 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-olive disabled:hover:translate-y-0 disabled:shadow-none"
       >
         <Send size={18} />
         {status === "loading" ? "Enviando…" : "Enviar mensaje"}

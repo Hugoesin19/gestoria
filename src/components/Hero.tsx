@@ -27,13 +27,6 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 bg-olive/8 border border-olive/15 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-olive" />
-              <p className="text-olive font-semibold text-xs uppercase tracking-widest">
-                {site.city} · Desde {site.since}
-              </p>
-            </div>
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-olive-dark leading-[1.12] mb-6">
               <span className="sr-only">
                 {site.name} — Gestoría en {site.city}.{" "}
